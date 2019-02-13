@@ -14,6 +14,7 @@ const mapTripUsersFromDBToObject = function(tripList) {
         convertedList.push(convertedList);
     }
 
+    return convertedList;
 }
 
 const mapTripsFromDBToObject = function(tripList) {
@@ -31,7 +32,8 @@ const mapTripsFromDBToObject = function(tripList) {
     
             convertedList.push(convertedList);
         }
-    
+
+        return convertedList;
     }
 
 module.exports = {

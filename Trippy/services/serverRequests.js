@@ -11,3 +11,6 @@ export function addTags(user, trip, tags) {
 export function getTags() {
     return axios.get('https://localhost:3000/getInterests')
 }
+
+export function addPartner() {}
+export function nextPartner() {}

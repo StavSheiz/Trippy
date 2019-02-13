@@ -28,7 +28,6 @@ export default class PartnerScreen extends React.Component {
         this.props.navigation.addListener(
             'didFocus',
             payload => {
-                console.log('focus')
                 this.setState({index:0})
             }
           );

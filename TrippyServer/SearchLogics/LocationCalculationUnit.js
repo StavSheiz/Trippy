@@ -31,6 +31,7 @@ module.exports = {
     calcLocationDegreeOfCloseness: calcLocationDegreeOfCloseness
 }
 
+/*
 var location2 = 
     {
         "address_components": [
@@ -308,3 +309,4 @@ var location1 =  {
     }
 
 console.log(calcLocationDegreeOfCloseness(location1, location2));
+*/

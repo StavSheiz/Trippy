@@ -18,6 +18,10 @@ router.get('/addNewTrip', function(req, res){
     },(err => {console.log(err)}))    ;
 });
 
+router.get('/findPartner', function(req, res){
+    searchBestMatch();
+});
+
 router.get('/addPartnerToTrip', function(req, res){
     addNewPartner(req.data).then((result)=>{
         res.send(result);

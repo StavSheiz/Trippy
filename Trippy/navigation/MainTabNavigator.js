@@ -7,9 +7,10 @@ import HomeScreen from '../screens/HomeScreen.js';
 import InterestsScreen from '../screens/InterestsScreen.js';
 import SettingsScreen from '../screens/SettingsScreen.js';
 import NewTrip from '../screens/NewTrip.js';
+import PartnerScreen from '../screens/PartnerScreen.js'
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Home: PartnerScreen,
 });
 
 HomeStack.navigationOptions = {

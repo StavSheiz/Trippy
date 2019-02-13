@@ -7,6 +7,7 @@ import {
 import { Avatar, Badge, Text, Icon } from 'react-native-elements';
 import { TopNavigation } from '../components/TopNavigation/TopNavigation'
 import Images from '../assets/images/images'
+import {getTags} from '../services/serverRequests'
 
 export default class InterestsScreen extends React.Component {
 	constructor(props) {
@@ -26,13 +27,14 @@ export default class InterestsScreen extends React.Component {
 	};
 
 	componentDidMount() {
-		//this.fetchTags()
+		this.fetchTags()
 	}
 
 	fetchTags() {
-		serverRequests.getTags().then((data) => {
-			this.setState({ tags: data.tags })
-		})
+		// getTags().then((data) => {
+		// 	console.log(data)
+		// 	//this.setState({ tags: data.tags })
+		// })
 	}
 
 	addTag(tag) {

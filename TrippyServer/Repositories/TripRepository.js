@@ -10,4 +10,13 @@ function addNewTrip(data){
     executeQuery(query, values);
 }
 
-module.exports = {addNewTrip};
+function addNewPartner(data){
+    var query = `
+        INSERT INTO public."TRIP_USER"
+        VALUES($1,$2,false)
+    `
+    const values=[data["trip"],data["user"]];
+    executeQuery(query, values);
+}
+
+module.exports = {addNewTrip, addNewPartner};

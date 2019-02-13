@@ -2,6 +2,7 @@ const googleMapsKey = 'AIzaSyDGoi4o6amvMNgsDecLshtZSssoKa_U-2w';
 
 const timeUtil = require("./TimeCalculationUnit");
 const locationUtil = require("./LocationCalculationUnit");
+const intrestsUtil = require("./InstrestsUtils");
 
 
 const timeValue = 1;
@@ -38,6 +39,6 @@ const CalCTripSimilarity = function(trip1, trip2) {
         grade += closnessDegree*locationValue;
     }
 
-    //var numberOfIdenticalCategories = calcSimilarCategoriesNum(trip1.Intrests, trip2.Intrsest);
+    var numberOfIdenticalIntrests = intrestsUtil.calcSimilarInsterstsNum(trip1.Intrests, trip2.Intrsest);
 
 };

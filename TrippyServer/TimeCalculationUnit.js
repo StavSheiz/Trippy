@@ -74,6 +74,10 @@ const datesDifferenceCalcMatrix =
 }
 
 
+module.exports = {
+    calcTimeOverlapp: calcTimeOverlapp
+}
+/*
 //run
 var a1=new Date();
 var a2=new Date();
@@ -87,7 +91,4 @@ b1.setDate(10);
 b2.setDate(15);
 
 console.log(calcTimeOverlapp({start:a1, end:a2}, {start:b1, end:b2}));
-
-module.exports = {
-    calcTimeOverlapp: calcTimeOverlapp
-}
+*/

@@ -15,6 +15,10 @@ router.get('/addNewTrip', function(req, res){
     addNewTrip();
 });
 
+router.get('/findPartner', function(req, res){
+    searchBestMatch();
+});
+
 router.get('/addPartnerToTrip', function(req, res){
     addNewPartner(req.data);
 })

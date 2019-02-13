@@ -46,3 +46,23 @@ const CalCTripSimilarity = function(trip1, trip2) {
 
     return grade;
 };
+
+const findBestPartner = function(myTrip, OtherTrips){
+    var bestTrip;
+
+    OtherTrips.map((currTrip) => {
+
+        var grade = CalCTripSimilarity(myTrip, currTrip);
+
+        currTrip.grade = grade
+    });
+
+    OtherTrips.sort(function(a, b){return b.grade-a.grade});
+
+    return OtherTrips;
+}
+
+
+module.exports = {
+    findBestPartner: findBestPartner
+}

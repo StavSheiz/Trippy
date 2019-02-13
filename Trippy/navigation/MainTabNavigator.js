@@ -8,6 +8,7 @@ import InterestsScreen from '../screens/InterestsScreen.js';
 import SettingsScreen from '../screens/SettingsScreen.js';
 import Trips from '../screens/Trips';
 import PartnerScreen from '../screens/PartnerScreen.js'
+import TripScreen from '../screens/TripScreen';
 
 const PartnerStack = createStackNavigator({
   Partner: PartnerScreen,
@@ -60,7 +61,7 @@ LinksStack.navigationOptions = {
 };
 
 const SettingsStack = createStackNavigator({
-  Settings: Trips,
+  Settings: TripScreen,
 });
 
 SettingsStack.navigationOptions = {

@@ -17,4 +17,8 @@ router.get('/addNewTrip', function(req, res){
     addNewTrip();
 });
 
+router.get('/findPartner', function(req, res){
+    searchBestMatch();
+});
+
 module.exports = router

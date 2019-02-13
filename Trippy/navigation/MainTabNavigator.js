@@ -2,10 +2,11 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import TabBarIcon from '../components/TabBarIcon.js';
+import HomeScreen from '../screens/HomeScreen.js';
+import LinksScreen from '../screens/LinksScreen.js';
+import SettingsScreen from '../screens/SettingsScreen.js';
+import NewTrip from '../screens/NewTrip.js';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -40,7 +41,7 @@ LinksStack.navigationOptions = {
 };
 
 const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+  Settings: NewTrip,
 });
 
 SettingsStack.navigationOptions = {

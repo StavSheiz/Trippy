@@ -7,6 +7,7 @@ const intrestsUtil = require("./InstrestsUtils");
 
 const timeValue = 1;
 const locationValue = 100;
+const intrestsValue = 1;
 
 
 const CalCTripSimilarity = function(trip1, trip2) {
@@ -41,4 +42,7 @@ const CalCTripSimilarity = function(trip1, trip2) {
 
     var numberOfIdenticalIntrests = intrestsUtil.calcSimilarInsterstsNum(trip1.Intrests, trip2.Intrsest);
 
+    grade +=numberOfIdenticalIntrests;
+
+    return grade;
 };

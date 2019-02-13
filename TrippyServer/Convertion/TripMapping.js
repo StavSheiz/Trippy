@@ -25,9 +25,13 @@ const mapTripsFromDBToObject = function(tripList) {
             currTrip = tripList[i];
     
             var convertedTrip = {
-                TripId: currTrip["TRIP_ID"],
-                UserId: currTrip["USER_ID"],
-                IsOwner: currTrip["IS_OWNER"]
+                Id: currTrip["ID"],
+                Location: currTrip["LOCATION"],
+                StartDate: new Date(currTrip["START_DATE"].toString()),
+                StartDate: new Date(currTrip["END_DATE"].toString()),
+                Details: currTrip["DETAILS"],
+                Intersts: currTrip["INTRESTS"],
+                Img: currTrip["IMG"],
             };
     
             convertedList.push(convertedList);

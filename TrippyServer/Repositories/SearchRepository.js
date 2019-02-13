@@ -7,12 +7,13 @@ function searchBestMatch(tripId){
     `
     const values= [ ];
 
-     var Trips = executeQuery(query, values);
+     executeQuery(query, values).then((trips)=>{
 
     
 
-    //console.log(myTrip);
-    console.log(Trips);
+        console.log(trips);
+        console.log('*********************');
+     });
 
 }
 

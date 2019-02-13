@@ -7,7 +7,7 @@ function addNewTrip(data){
     `
     const values= ['{"x": "4.6", "y":"7.8"}', '1999/09/09', '1999/09/09', "good good", [1,2], "" ];
 
-    executeQuery(query, values);
+    return executeQuery(query, values);
 }
 
 function addNewPartner(data){
@@ -16,7 +16,7 @@ function addNewPartner(data){
         VALUES($1,$2,false)
     `
     const values=[data["trip"],data["user"]];
-    executeQuery(query, values);
+    return executeQuery(query, values);
 }
 
 module.exports = {addNewTrip, addNewPartner};

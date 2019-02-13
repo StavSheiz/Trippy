@@ -7,24 +7,32 @@ const client = new Client({
     database: 'twfnggzo',
     password: 'K3Io6cuZK0D-Cr18ta89JRJ3uhdvFE4u',
     port: 5432,
-  })
+})
 
-function connectToDb(){
+function connectToDb() {
     return client.connect();
 }
 
 
-function executeQuery(query) {
-   connectToDb().then(() => {
-    client.query('SELECT * from public."INTRESTS"', (err, res) => {
-        console.log(err, res)
+function executeQuery(query, params) {
+
+    var promise = new Promise(
+    function (resolve, reject) {connectToDb().then(() => {
+        client.query(query, params, (err, res) => {
+            console.log(err, res)
+            client.end()
+
+            resolve(res["rows"]);
+        })
+    }, (err) => {
         client.end()
-      })
-   }, (err) => {});
+        console.log(err)
+        reject(err);
+    })});
 
-
+    return promise;
 }
 
 
-var exports = module.exports = {executeQuery};
+var exports = module.exports = { executeQuery };
 

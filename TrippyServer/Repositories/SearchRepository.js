@@ -4,13 +4,18 @@ function searchBestMatch(tripId){
     var query = `
         SELECT * 
         FROM public."TRIPS"
-        WHERE "ID" = $1
     `
-    const values= [ tripId ];
+    const values= [ ];
 
-    console.log(executeQuery(query, values));
+     var Trips = executeQuery(query, values);
+
+    
+
+    //console.log(myTrip);
+    console.log(Trips);
+
 }
 
 module.exports = {searchBestMatch};
 
-//searchBestMatch(1);
+searchBestMatch(1);

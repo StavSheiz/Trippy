@@ -8,5 +8,9 @@ export function addTags(user, trip, tags) {
 }
 
 export function getTags() {
-    return fetch('localhost/TripyServer/getTags').then((response) => response.json())
+    return fetch('localhost:3000/getInterests').then((response) => {
+        response.json().then((data)=>{
+            console.log(data)
+        })
+    })
 }

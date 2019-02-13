@@ -64,6 +64,7 @@ export default class NewTrip extends React.Component {
                                 borderBottomWidth:0
                               },
                               textInput: {
+                                backgroundColor: '#f6f5f3',
                                 marginLeft: 0,
                                 marginRight: 0,
                                 // height: 38,
@@ -132,6 +133,7 @@ export default class NewTrip extends React.Component {
                             cancelBtnText="Cancel"
                             customStyles={{
                                 dateInput: {
+                                    border: 0
                                 }
                             }}
                             onDateChange={(date) => {this.setState({EndDate: date})}}

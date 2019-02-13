@@ -21,7 +21,7 @@ export default class PartnerScreen extends React.Component {
             name: 'Stav Sheizaf',
             age: 21,
             gender: true,
-            details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationem',
+            details: ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationemLorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationem',
             index: 0
         }
         
@@ -95,14 +95,15 @@ export default class PartnerScreen extends React.Component {
                         containerStyle={{height: 100}}
                         PlaceholderContent={<ActivityIndicator />}
                     />
-                    <Divider style={{ backgroundColor: 'blue' }}/>
-                    <Text h2 style={{paddingTop: 15,paddingBottom: 15,paddingLeft: 30, paddingRight: 30}}>{this.state.name}</Text>
-                    <Divider style={{ backgroundColor: 'blue' }}/>
+                    <Divider style={{ backgroundColor: '#f8bbd0' }}/>
+                    <Text h2 style={{paddingTop: 10,paddingBottom: 10,paddingLeft: 30, paddingRight: 30, backgroundColor: '#c2185b', color:'white'
+}}>{this.state.name}</Text>
+                    <Divider style={{ backgroundColor: '#f8bbd0' }}/>
                     <View style={styles.stageTwo}>
-                        <Text h4 style={{paddingTop: 10,paddingBottom: 10,paddingLeft: 30, paddingRight: 30}}>{this.state.age},  {this.Gender}</Text>
+                        <Text style={{paddingTop: 3,paddingBottom: 3,paddingLeft: 30, paddingRight: 30, color:'white', fontSize: 20}}>{this.state.age},  {this.Gender}</Text>
                     </View>
-                    <Divider style={{ backgroundColor: 'blue' }}/>
-                    <Text h5 style={{padding: 30}}>{this.state.details}</Text>
+                    <Divider style={{ backgroundColor: '#f8bbd0' }}/>
+                    <Text style={{padding: 30, fontSize:20, height: 200}}>{this.state.details}</Text>
                     </ScrollView>
                     </GestureRecognizer>
                 </View>
@@ -121,8 +122,7 @@ export default class PartnerScreen extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
-	},
+        backgroundColor: '#f6f5f3'	},
 
 	contentContainer: {
 		flex: 1,
@@ -139,7 +139,8 @@ const styles = StyleSheet.create({
         flex: -1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        height: 50
+        height: 35,
+        backgroundColor:'#E91E63'
     },
     wrapper: {
     },

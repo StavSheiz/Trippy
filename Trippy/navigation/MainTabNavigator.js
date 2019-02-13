@@ -8,6 +8,7 @@ import InterestsScreen from '../screens/InterestsScreen.js';
 import SettingsScreen from '../screens/SettingsScreen.js';
 import Trips from '../screens/Trips';
 import PartnerScreen from '../screens/PartnerScreen.js'
+import NewTrip from '../screens/NewTrip';
 
 const PartnerStack = createStackNavigator({
   Partner: PartnerScreen,
@@ -33,6 +34,24 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const NewTripStack = createStackNavigator({
+  NewTrip: NewTrip,
+});
+
+NewTripStack.navigationOptions = {
+  tabBarLabel: 'NewTrip',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -78,4 +97,5 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  NewTripStack
 });

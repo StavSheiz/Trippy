@@ -46,6 +46,24 @@ HomeStack.navigationOptions = {
   ),
 };
 
+const NewTripStack = createStackNavigator({
+  NewTrip: NewTrip,
+});
+
+NewTripStack.navigationOptions = {
+  tabBarLabel: 'NewTrip',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
 const LinksStack = createStackNavigator({
   Links: InterestsScreen,
 });
@@ -79,4 +97,5 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  NewTripStack
 });

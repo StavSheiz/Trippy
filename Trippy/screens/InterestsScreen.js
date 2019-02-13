@@ -15,9 +15,9 @@ export default class InterestsScreen extends React.Component {
 
 		this.state = {
 			tags: [
-				{ id: 1, name: 'Food', img: 'Food' },
-				{ id: 2, name: 'Art', img: 'Art' },
-				{ id: 3, name: 'Theater', img: 'Theater'}
+				// { id: 1, name: 'Food', img: 'Food' },
+				// { id: 2, name: 'Art', img: 'Art' },
+				// { id: 3, name: 'Theater', img: 'Theater'}
 			],
 			selectedTags: []
 		}
@@ -31,10 +31,10 @@ export default class InterestsScreen extends React.Component {
 	}
 
 	fetchTags() {
-		// getTags().then((data) => {
-		// 	console.log(data)
-		// 	//this.setState({ tags: data.tags })
-		// })
+		getTags().then((data) => {
+			console.log(data)
+			//this.setState({ tags: data.tags })
+		}, (err) => {console.log(err)})
 	}
 
 	addTag(tag) {

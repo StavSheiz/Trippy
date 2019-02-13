@@ -3,14 +3,18 @@ const express = require('express')
 const router = express.Router()
 
 const { executeQuery } = require('../DBAccess')
-
-router.use(function timeLog (req, res, next) {
-    console.log('Time: ', Date.now())
-    next()
-  })
+const { addNewTrip } = require('../Repositories/TripRepository')
 
 router.get('/getIntrests', function (req, res) {
-    executeQuery()
+
+    executeQuery('select * from public."INTRESTS"').then((result)=>{
+        res.send(result);
+    },(err => {console.log(err)}))
+    
+});
+
+router.get('/addNewTrip', function(req, res){
+    addNewTrip();
 });
 
 module.exports = router

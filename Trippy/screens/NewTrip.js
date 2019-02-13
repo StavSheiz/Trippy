@@ -17,7 +17,6 @@ export default class NewTrip extends React.Component {
     }
 
     handleTextChange(name, event) {
-        console.log(event);
         this.setState({[name]: event.nativeEvent.text});   
     }
 

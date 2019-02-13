@@ -1,3 +1,4 @@
+import axios from 'axios'
 export function addTags(user, trip, tags) {
     fetch('localhost/TripyServer/addTags',
         {
@@ -8,9 +9,5 @@ export function addTags(user, trip, tags) {
 }
 
 export function getTags() {
-    return fetch('localhost:3000/getInterests').then((response) => {
-        response.json().then((data)=>{
-            console.log(data)
-        })
-    })
+    return axios.get('https://localhost:3000/getInterests')
 }

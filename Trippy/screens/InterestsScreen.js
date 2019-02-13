@@ -27,13 +27,14 @@ export default class InterestsScreen extends React.Component {
 	};
 
 	componentDidMount() {
-		//this.fetchTags()
+		this.fetchTags()
 	}
 
 	fetchTags() {
-		getTags().then((data) => {
-			this.setState({ tags: data.tags })
-		})
+		// getTags().then((data) => {
+		// 	console.log(data)
+		// 	//this.setState({ tags: data.tags })
+		// })
 	}
 
 	addTag(tag) {

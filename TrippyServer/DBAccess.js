@@ -1,44 +1,23 @@
 
 const { Pool, Client } = require('pg')
 
-const client = new Client({
-    user: 'twfnggzo',
-    host: 'manny.db.elephantsql.com',
-    database: 'twfnggzo',
-    password: 'K3Io6cuZK0D-Cr18ta89JRJ3uhdvFE4u',
-    port: 5432,
-})
+async function executeQuery(query, params) {
 
-function connectToDb() {
-    if (!client["_connected"]){
-        return client.connect();
-    }
-    else 
-        var a = new Promise();
-        a.resolve();
+    const client = new Client({
+        user: 'twfnggzo',
+        host: 'manny.db.elephantsql.com',
+        database: 'twfnggzo',
+        password: 'K3Io6cuZK0D-Cr18ta89JRJ3uhdvFE4u',
+        port: 5432,
+    })
 
-        return a;
-}
+    await client.connect();
 
+    let res = await client.query(query, params);
+    await client.end();
 
-function executeQuery(query, params) {
+    return res["rows"];
 
-    var promise = new Promise(
-    function (resolve, reject) {
-        connectToDb().then(() => {
-        client.query(query, params, (err, res) => {
-            console.log(err, res)
-             client.end()
-
-            resolve(res["rows"]);
-         })
-    }, (err) => {
-         client.end()
-        console.log(err)
-        reject(err);
-    })});
-
-    return promise;
 }
 
 

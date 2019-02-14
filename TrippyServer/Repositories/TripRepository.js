@@ -19,4 +19,18 @@ function addNewPartner(data){
     return executeQuery(query, values);
 }
 
-module.exports = {addNewTrip, addNewPartner};
+function getTripPartners(data){
+    var query = `
+        SELECT *
+        FROM public."USERS" u, 
+            public."TRIP_USER" tu
+        WHERE tu."TRIP_ID" = $1
+        AND tu."USER_ID" = u."ID"
+    `
+
+    const values=[1];
+
+    return executeQuery(query, values);
+}
+
+module.exports = {addNewTrip, addNewPartner, getTripPartners};

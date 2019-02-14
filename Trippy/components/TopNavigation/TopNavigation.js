@@ -14,6 +14,6 @@ class HeaderButton extends React.Component {
 
 export class TopNavigation extends React.Component {
 	render() {
-		return <Header backgroundColor='#E91E63' placement='left' leftComponent={{ text: this.props.title, style: {color: '#fff', fontSize: 20} }} rightComponent={<HeaderButton onClick={this.props.onNext} title='Next'/>} />;
+		return <Header backgroundColor='#E91E63' placement='left' leftComponent={{ text: this.props.title, style: {color: '#fff', fontSize: 20} }} rightComponent={<HeaderButton onPress={this.props.onNext} title='Next'/>} />;
 	}
 }

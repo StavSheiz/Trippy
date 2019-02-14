@@ -7,9 +7,13 @@ import {
 import { Avatar, Badge, Text, Icon } from 'react-native-elements';
 import { TopNavigation } from '../components/TopNavigation/TopNavigation'
 import Images from '../assets/images/images'
-import {getTags} from '../services/serverRequests'
+import {getTags, addTrip} from '../services/serverRequests'
 
 export default class InterestsScreen extends React.Component {
+    static navigationOptions = {
+		header: null,
+    };
+
 	constructor(props) {
 		super(props)
 
@@ -56,10 +60,26 @@ export default class InterestsScreen extends React.Component {
 		</View>)
 	}
 
+	saveTrip() {
+		const {navigation} = this.props;
+		const tripDetails = navigation.getParam('tripDetails');
+		Object.assign(tripDetails, {tags: this.state.selectedTags});
+
+		addTrip(tripDetails).then((data) => {
+			console.log(data);
+			console.log('after');
+		}, (err) => {
+			console.log(err);
+			console.log('afterrrr');
+		});
+
+		this.props.navigation.navigate('Partner');
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
-				<TopNavigation title='My Interests'></TopNavigation>
+				<TopNavigation title='My Interests' onNext={this.saveTrip.bind(this)}></TopNavigation>
 				<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 					{this.state.tags.map((tag) => {
 						return this.Tag(tag)

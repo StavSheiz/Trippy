@@ -6,12 +6,13 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { TopNavigation } from '../components/TopNavigation/TopNavigation'
 
-export default class NewTrip extends React.Component {
+export default class NewTripScreen extends React.Component {
     static navigationOptions = {
 		header: null,
-	};
+    };
+    
     constructor(props) {
-        super();
+        super(props);
 
         this.state = {
             Name: '',
@@ -19,7 +20,8 @@ export default class NewTrip extends React.Component {
             StartDate: '',
             EndDate: '',
             Details: '',
-            listViewDisplayed: false
+            listViewDisplayed: false,
+            img: 'https://img01.siam2nite.com/7CsWSUzyexAXjJlYdfzlfpzqeEw=/smart/magazine/articles/786/cover_large_p1c53dn6k3j5g1mgg41ugjk10335.png'
         }
     }
 
@@ -27,17 +29,27 @@ export default class NewTrip extends React.Component {
         this.setState({[name]: event.nativeEvent.text});   
     }
 
-    render() {
-        const imgUrl = 'https://img01.siam2nite.com/7CsWSUzyexAXjJlYdfzlfpzqeEw=/smart/magazine/articles/786/cover_large_p1c53dn6k3j5g1mgg41ugjk10335.png';
+    handleNextScreen() {
+        const tripDetails = { tripDetails: {
+            name: this.state.Name,
+            location: this.state.Location,
+            start_date: this.state.StartDate,
+            end_date: this.state.EndDate,
+            details: this.state.Details,
+            img: this.state.img
+        }};
 
+        this.props.navigation.navigate('Interests', tripDetails);
+    }
+
+    render() {
         return (
-        
         <View style={styles.mainView}>
-        	<TopNavigation title="Let's Travel"></TopNavigation>
+        	<TopNavigation title="Let's Travel" onNext={this.handleNextScreen.bind(this)}></TopNavigation>
             <KeyboardAwareScrollView>
                 <View keyboardShouldPersistTaps='handled' >   
                     <Image
-                        source={{ uri: imgUrl }}
+                        source={{ uri: this.state.img }}
                         style={{ height: 200 }}
                         PlaceholderContent={<ActivityIndicator />}
                     />

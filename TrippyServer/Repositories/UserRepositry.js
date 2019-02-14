@@ -15,4 +15,15 @@ function getTripsForUser(data){
     return executeQuery(query, values)
 }
 
-module.exports = {getTripsForUser};
+function addNewSwipe(data){
+    let query =`
+    INSERT INTO public."PARTNERS_SUGGESTIONS"(
+        "OWNER_TRIP_ID", "PARTNER_TRIP_ID", "WANTED")
+        VALUES ($1, $2, $3);
+    `
+    const values=[req.params.ownerId,req.params.partnerId,req.params.wanted==0]
+
+    return executeQuery(query, values)
+}
+
+module.exports = {getTripsForUser, addNewSwipe};

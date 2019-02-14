@@ -18,12 +18,13 @@ router.get('/addNewTrip', function(req, res){
     },(err => {console.log(err)}))    ;
 });
 
+// tripId parameter
 router.get('/findPartner', function(req, res){
-    searchBestMatch();
+    searchBestMatch(req.params.tripId, res);
 });
 
 router.get('/addPartnerToTrip', function(req, res){
-    addNewPartner(req.data).then((result)=>{
+    addNewPartner(req.params).then((result)=>{
         res.send(result);
     },(err => {console.log(err)}))    ;
 })
@@ -34,11 +35,22 @@ router.get('/getPartners', function(req, res){
     },(err => {console.log(err)}))    ;})
 
 router.get('/getTripsForUser', function(req,res){
-    getTripsForUser(req.data).then((result)=>{
+    getTripsForUser(req.params).then((result)=>{
         res.send(result);
     },(err => {console.log(err)}))    ;
 })
 
+router.get('/getWantedPartners', function(req,res){
+    getWantedPartners(req.params.tripId).then((result)=>{
+        res.send(result);
+    },(err => {console.log(err)}))    ;
+})
+
+router.get('/addNewSwipe', function(req,res){
+    addNewSwipe(req.params).then((result)=>{
+        res.send(result);
+    },(err => {console.log(err)}))    ;
+})
 
 
 module.exports = router

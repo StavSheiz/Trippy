@@ -4,7 +4,9 @@ import { Image, Text } from 'react-native-elements';
 
 export default class Item extends React.Component {
   constructor(props) {
-    super();
+    super(props);
+
+    console.log(this.props);
   }
   
 render() {

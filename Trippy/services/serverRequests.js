@@ -15,7 +15,7 @@ export async function getTags() {
     try {
       console.log('send')
       return axios.get(
-        'http://192.168.43.234:3000/getIntrests'
+        'http://192.168.43.244:3000/getIntrests'
         ,{ crossdomain: true });
     } catch (error) {
       console.error(error);

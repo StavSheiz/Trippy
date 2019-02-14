@@ -9,6 +9,7 @@ import SettingsScreen from '../screens/SettingsScreen.js';
 import Trips from '../screens/Trips';
 import PartnerScreen from '../screens/PartnerScreen.js'
 import TripScreen from '../screens/TripScreen';
+import NewTrip from '../screens/NewTrip'
 
 const PartnerStack = createStackNavigator({
   Partner: PartnerScreen,

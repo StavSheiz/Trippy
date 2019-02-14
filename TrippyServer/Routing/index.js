@@ -13,7 +13,7 @@ router.get('/getIntrests', function (req, res) {
 });
 
 router.get('/addNewTrip', function(req, res){
-    addNewTrip().then((result)=>{
+    addNewTrip(req.params).then((result)=>{
         res.send(result);
     },(err => {console.log(err)}))    ;
 });

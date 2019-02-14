@@ -1,6 +1,6 @@
 import axios from 'axios'
 export function addTags(user, trip, tags) {
-    fetch('localhost/TripyServer/addTags',
+    fetch('http://192.168.43.244:3000/TripyServer/addTags',
         {
             method: 'POST',
             body: JSON.stringify({ user, trip, tags })
@@ -26,7 +26,7 @@ export async function getTags() {
     try {
       console.log('send')
       return axios.get(
-        'https://192.168.43.244:3000/findPartners'
+        'http://192.168.43.244:3000/findPartners'
       );
     } catch (error) {
       console.error(error);
@@ -36,13 +36,10 @@ export function addPartner() {}
 export function nextPartner() {}
 export function addTrip(newTrip) {
     try {
-      console.log('send')
-      // return axios.post(
-      //   'https://192.168.43.244:3000/addTrip',
-      //   newTrip
-      // );
-      return axios.get(
-        ''
+      console.log(newTrip)
+      return axios.post(
+        'http://192.168.43.244:3000/addNewTrip',
+        newTrip
       );
     } catch (error) {
       console.error(error);

@@ -38,7 +38,13 @@ export default class PartnerScreen extends React.Component {
 	}
 	static navigationOptions = {
 		header: null,
-	};
+    };
+    
+    componentDidMount() {
+        const {navigation} = this.props;
+		const tripId = navigation.getParam('tripId');
+        this.fetchPartner(tripId)
+    }
 
     get Gender() {
         return this.state.gender ? 'Female' : 'Male'
@@ -71,9 +77,9 @@ export default class PartnerScreen extends React.Component {
       }
 
     fetchPartner() {
-        // getPartner(this.props.trip).then((data)=> {
-        //     this.setState({data})
-        // })
+        getPartner(this.props.trip).then((data)=> {
+            this.setState({data})
+        })
     }
 
     onIndexChanged(index) {

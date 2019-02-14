@@ -85,7 +85,6 @@ export default class InterestsScreen extends React.Component {
 		return (
 			<View style={styles.container}>
 				<TopNavigation title='My Interests' onNext={this.saveTrip.bind(this)}></TopNavigation>
-				<TopNavigation title='My Interests'></TopNavigation>
 				<FlatList extraData={this.state} numColumns={2} style={styles.container} contentContainerStyle={styles.contentContainer} data={this.state.tags} renderItem={this.Tag.bind(this)}>
 				</FlatList>
 			</View>

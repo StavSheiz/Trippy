@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, ActivityIndicator } from 'react-native'
+import { ScrollView, View, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { Image, Text } from 'react-native-elements';
 
 export default class Item extends React.Component {
@@ -13,15 +13,17 @@ render() {
     const {main, sub, img} = this.props;
     console.log(sub);
     return (
-        <View style={styles.row}>
-            <Image source={{ uri: img }}
-                style={styles.image}
-                PlaceholderContent={<ActivityIndicator />}/>
-            <View style={styles.column}>
-                <Text style={sub ? styles.main : styles.justMain}>{main}</Text>
-                { sub ? <Text style={styles.sub}>{sub}</Text> : null }
+        <TouchableOpacity onPress={this.props.onClick}>
+            <View style={styles.row} >
+                <Image source={{ uri: img }}
+                    style={styles.image}
+                    PlaceholderContent={<ActivityIndicator />}/>
+                <View style={styles.column}>
+                    <Text style={sub ? styles.main : styles.justMain}>{main}</Text>
+                    { sub ? <Text style={styles.sub}>{sub}</Text> : null }
+                </View>
             </View>
-        </View>   
+        </TouchableOpacity>   
     )
   }
 }
@@ -32,6 +34,7 @@ const styles = {
         width: 80,
         borderRadius: 40,
         marginRight: 20,
+        marginLeft: 15,
         marginTop: 10
     },
     row: {

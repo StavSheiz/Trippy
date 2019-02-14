@@ -70,7 +70,7 @@ const TripsStack = createStackNavigator({
 });
 
 TripsStack.navigationOptions = {
-  tabBarLabel: 'Trips',
+  tabBarLabel: 'My Trips',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -97,12 +97,12 @@ InterestsStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: TripScreen,
+const TripStack = createStackNavigator({
+  Trip: TripScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+TripStack.navigationOptions = {
+  tabBarLabel: 'Trip',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -113,9 +113,8 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   NewTripStack,
-  PartnerStack,
-  HomeStack,
+  TripsStack,
+  TripStack,
   InterestsStack,
-  SettingsStack,
-  TripsStack
+  PartnerStack
 });

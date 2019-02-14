@@ -15,7 +15,7 @@ import Swiper from 'react-native-swiper'
 
 export default class PartnerScreen extends React.Component {
     static navigationOptions = {
-		header: null,
+        header: null,
     };
 
     constructor(props) {

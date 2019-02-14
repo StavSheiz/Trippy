@@ -8,7 +8,8 @@ import { TopNavigation } from '../components/TopNavigation/TopNavigation'
 
 export default class NewTripScreen extends React.Component {
     static navigationOptions = {
-		header: null,
+        header: null,
+        tabBarVisible: false
     };
     
     constructor(props) {

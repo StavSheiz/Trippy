@@ -13,6 +13,7 @@ import {getTags, addTrip} from '../services/serverRequests'
 export default class InterestsScreen extends React.Component {
     static navigationOptions = {
 		header: null,
+		tabBarVisible: false
     };
 
 	constructor(props) {

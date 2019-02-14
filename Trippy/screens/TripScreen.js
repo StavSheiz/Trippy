@@ -6,18 +6,20 @@ import Images from '../assets/images/images';
 
 export default class TripScreen extends React.Component {
   constructor(props) {
-    super();
+    super(props);
+    
+    const {navigation} = this.props;
+    const trip = navigation.getParam('trip');
+
+    console.log(trip);
 
     this.state = {
-        img: Images['Stav'],
-        name: 'Mont Blanc',
-        location: 'France',
-        start_date: '28-09-2019',
-        end_date: '04-10-2019',
-        partners: [ { main:'Daniel Czimer', img:Images['Stav']},
-                    { main:'Daniel Czimer', img:Images['Stav']},
-                    { main:'Daniel Czimer', img:Images['Stav']},
-                    { main:'Daniel Czimer', img:Images['Stav']}]
+        img: trip.img,
+        name: trip.name,
+        location: trip.location,
+        start_date: trip.start_date,
+        end_date: trip.end_date,
+        partners: trip.partners
     }
   }
   

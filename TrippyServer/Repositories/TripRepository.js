@@ -18,5 +18,22 @@ function addNewPartner(data){
     const values=[data["trip"],data["user"]];
     return executeQuery(query, values);
 }
+function getWantedPartners(tripId){
+    let query =`
+    SELECT u."NAME", u."IMG" FROM public."USERS" u
+    WHERE u."ID" IN (
+                      SELECT tu."USER_ID"
+                      FROM public."TRIP_USER" tu
+                      WHERE tu."IS_OWNER" = true AND
+                            tu."TRIP_ID" IN (
+                                              SELECT "PARTNER_TRIP_ID"
+                                              FROM public."PARTNERS_SUGGESTIONS"
+                                              WHERE "OWNER_TRIP_ID" = $1 AND
+                                                    "WANTED" = true))
+    `
+    const values=[tripId];
 
-module.exports = {addNewTrip, addNewPartner};
+    return executeQuery(query, values)
+}
+
+module.exports = {addNewTrip, addNewPartner, getWantedPartners};

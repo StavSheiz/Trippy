@@ -9,7 +9,7 @@ import {
 import { Avatar, Badge, Text, Icon, Divider } from 'react-native-elements';
 import { TopNavigation } from '../components/TopNavigation/TopNavigation'
 import Images from '../assets/images/images'
-import {getTags, addPartner, nextPartner} from '../services/serverRequests'
+import {getTags, addPartner, nextPartner, getPartner} from '../services/serverRequests'
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures'
 import Swiper from 'react-native-swiper'
 
@@ -51,35 +51,54 @@ export default class PartnerScreen extends React.Component {
     }
 
     onSwipeLeft(gestureState) {
-        this.props.navigation.navigate('Partner')
     }
      
     onSwipeRight(gestureState) {
     }
 
     onSwipe(gestureName, gestureState) {
-        console.log(this.props);
         const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
         this.setState({gestureName: gestureName});
-        switch (gestureName) {
-            case SWIPE_LEFT:
-                addPartner(this.props.user, this.props.trip)
-                setTimeout(()=>{}, 500)
-                this.props.navigation.navigate('Home');
-                break;
-            case SWIPE_RIGHT:
-                nextPartner(this.props.user, this.props.trip)
-                setTimeout(()=>{}, 500)
+        const partner = nextPartner()
+        console.log(partner)
+        // setTimeout(()=>{}, 500)
+        if(partner) {
+            this.setState({img: partner.img, name: partner.name, age: partner.age, gender: partner.gender, details: partner.details, index: 0})
+            this.props.navigation.navigate('Home');
+            // console.log('hi')
+        } else {
+            this.props.navigation.navigate('Home');
+        // switch (gestureName) {
+            // case SWIPE_LEFT:
+            //     addPartner()
+            //     setTimeout(()=>{}, 500)
+            //     this.props.navigation.navigate('Home');
+            //     break;
+            // case SWIPE_RIGHT:
+            //     const partner = nextPartner()
+            //     console.log(partner)
+            //     // setTimeout(()=>{}, 500)
+            //     if(partner) {
+            //         this.setState({img: partner.img, name: partner.name, age: partner.age, gender: partner.gender, details: partner.details, index: 0})
+            //         // this.props.navigation.navigate('Partner');
+            //         console.log('hi')
+            //     } else {
+            //         this.props.navigation.navigate('Home');
 
-                this.props.navigation.navigate('Home');
-                break;
+            //     }
+            //     break;
         }
       }
 
-    fetchPartner() {
-        getPartner(this.props.trip).then((data)=> {
-            this.setState({data})
-        })
+    fetchPartner(tripId) {
+        // const partner = nextPartner();
+        // if(partner) {
+        //     this.setState({img: partner.img, name: partner.name, age: partner.age, gender: partner.gender, details: partner.details})
+        //     this.props.navigation.navigate('Home');
+
+        // } else {
+        //     this.props.navigation.navigate('Home');
+        // }
     }
 
     onIndexChanged(index) {

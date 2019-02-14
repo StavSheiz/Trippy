@@ -6,11 +6,15 @@ const {
 } = require('../DBAccess')
 const {
     addNewTrip,
-    addNewPartner
+    addNewPartner,
+    getTripPartners
 } = require('../Repositories/TripRepository')
 const {
     getTripsForUser
 } = require('../Repositories/UserRepositry')
+const {
+    searchBestMatch
+} = require('../Repositories/SearchRepository')
 
 router.get('/getIntrests', function (req, res) {
     executeQuery('select * from public."INTRESTS"').then((result) => {
@@ -29,8 +33,8 @@ router.post('/addNewTrip', function (req, res) {
 });
 
 // tripId parameter
-router.get('/findPartner', function (req, res) {
-    searchBestMatch(req.params.tripId, res);
+router.post('/findPartners', function (req, res) {
+    searchBestMatch(req.body.tripId, res)
 });
 
 router.get('/addPartnerToTrip', function (req, res) {
@@ -49,6 +53,21 @@ router.get('/getTripsForUser', function (req, res) {
     }));
 })
 
+router.get('/getWantedPartners', function (req, res) {
+    getWantedPartners(req.params.tripId).then((result) => {
+        res.send(result);
+    }, (err => {
+        console.log(err)
+    }));
+})
+
+router.get('/addNewSwipe', function (req, res) {
+    addNewSwipe(req.params).then((result) => {
+        res.send(result);
+    }, (err => {
+        console.log(err)
+    }));
+})
 
 
 module.exports = router

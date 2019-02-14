@@ -38,201 +38,203 @@ function searchBestMatch(tripId, response){
 
 module.exports = {searchBestMatch};
 
-var startDate = new Date();
-var endDate = new Date();
+searchBestMatch(3, {send:function(q){console.log(q)}});
 
-startDate.setDate(1);
-endDate.setDate(10);
+// var startDate = new Date();
+// var endDate = new Date();
 
-myTrip = {
-    Id:1,
-    Intrests:[1, 2, 3],
-    StartDate: startDate,
-    EndDate: endDate,
-    Location:    {
-        "address_components": [
-            {
-                "long_name": "Haifa",
-                "short_name": "Haifa",
-                "types": [
-                    "locality",
-                    "political"
-                ]
-            },
-            {
-                "long_name": "Haifa",
-                "short_name": "Haifa",
-                "types": [
-                    "administrative_area_level_2",
-                    "political"
-                ]
-            },
-            {
-                "long_name": "Haifa District",
-                "short_name": "Haifa District",
-                "types": [
-                    "administrative_area_level_1",
-                    "political"
-                ]
-            },
-            {
-                "long_name": "Israel",
-                "short_name": "IL",
-                "types": [
-                    "country",
-                    "political"
-                ]
-            }
-        ],
+// startDate.setDate(1);
+// endDate.setDate(10);
+
+// myTrip = {
+//     Id:1,
+//     Intrests:[1, 2, 3],
+//     StartDate: startDate,
+//     EndDate: endDate,
+//     Location:    {
+//         "address_components": [
+//             {
+//                 "long_name": "Haifa",
+//                 "short_name": "Haifa",
+//                 "types": [
+//                     "locality",
+//                     "political"
+//                 ]
+//             },
+//             {
+//                 "long_name": "Haifa",
+//                 "short_name": "Haifa",
+//                 "types": [
+//                     "administrative_area_level_2",
+//                     "political"
+//                 ]
+//             },
+//             {
+//                 "long_name": "Haifa District",
+//                 "short_name": "Haifa District",
+//                 "types": [
+//                     "administrative_area_level_1",
+//                     "political"
+//                 ]
+//             },
+//             {
+//                 "long_name": "Israel",
+//                 "short_name": "IL",
+//                 "types": [
+//                     "country",
+//                     "political"
+//                 ]
+//             }
+//         ],
        
-        "name": "Haifa",
+//         "name": "Haifa",
         
-        "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
+//         "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
         
-    }
-}
+//     }
+// }
 
-var other = [
-    {
-        Id:2,
-        Intrests:[2, 3],
-        StartDate: startDate,
-        EndDate: endDate,
-        Location:    {
-            "address_components": [
-                {
-                    "long_name": "Haifa",
-                    "short_name": "Haifa",
-                    "types": [
-                        "locality",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "Haifa",
-                    "short_name": "Haifa",
-                    "types": [
-                        "administrative_area_level_2",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "Haifa District",
-                    "short_name": "Haifa District",
-                    "types": [
-                        "administrative_area_level_1",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "Israel",
-                    "short_name": "IL",
-                    "types": [
-                        "country",
-                        "political"
-                    ]
-                }
-            ],
+// var other = [
+//     {
+//         Id:2,
+//         Intrests:[2, 3],
+//         StartDate: startDate,
+//         EndDate: endDate,
+//         Location:    {
+//             "address_components": [
+//                 {
+//                     "long_name": "Haifa",
+//                     "short_name": "Haifa",
+//                     "types": [
+//                         "locality",
+//                         "political"
+//                     ]
+//                 },
+//                 {
+//                     "long_name": "Haifa",
+//                     "short_name": "Haifa",
+//                     "types": [
+//                         "administrative_area_level_2",
+//                         "political"
+//                     ]
+//                 },
+//                 {
+//                     "long_name": "Haifa District",
+//                     "short_name": "Haifa District",
+//                     "types": [
+//                         "administrative_area_level_1",
+//                         "political"
+//                     ]
+//                 },
+//                 {
+//                     "long_name": "Israel",
+//                     "short_name": "IL",
+//                     "types": [
+//                         "country",
+//                         "political"
+//                     ]
+//                 }
+//             ],
            
-            "name": "Haifa",
+//             "name": "Haifa",
             
-            "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
+//             "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
             
-        }
-    },
-    {
-        Id:3,
-        Intrests:[1, 2, 3],
-        StartDate: startDate,
-        EndDate: endDate,
-        Location:   {
-            "address_components": [
-                {
-                    "long_name": "Haifa",
-                    "short_name": "Haifa",
-                    "types": [
-                        "locality",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "Haifa",
-                    "short_name": "Haifa",
-                    "types": [
-                        "administrative_area_level_2",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "Haifa District",
-                    "short_name": "Haifa District",
-                    "types": [
-                        "administrative_area_level_1",
-                        "political"
-                    ]
-                },
-                {
-                    "long_name": "Israel",
-                    "short_name": "IL",
-                    "types": [
-                        "country",
-                        "political"
-                    ]
-                }
-            ],
+//         }
+//     },
+//     {
+//         Id:3,
+//         Intrests:[1, 2, 3],
+//         StartDate: startDate,
+//         EndDate: endDate,
+//         Location:   {
+//             "address_components": [
+//                 {
+//                     "long_name": "Haifa",
+//                     "short_name": "Haifa",
+//                     "types": [
+//                         "locality",
+//                         "political"
+//                     ]
+//                 },
+//                 {
+//                     "long_name": "Haifa",
+//                     "short_name": "Haifa",
+//                     "types": [
+//                         "administrative_area_level_2",
+//                         "political"
+//                     ]
+//                 },
+//                 {
+//                     "long_name": "Haifa District",
+//                     "short_name": "Haifa District",
+//                     "types": [
+//                         "administrative_area_level_1",
+//                         "political"
+//                     ]
+//                 },
+//                 {
+//                     "long_name": "Israel",
+//                     "short_name": "IL",
+//                     "types": [
+//                         "country",
+//                         "political"
+//                     ]
+//                 }
+//             ],
            
-            "name": "Haifa",
+//             "name": "Haifa",
             
-            "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
+//             "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
             
-        }
-    },
-    {
-        Id:4,
-        Intrests:[],
-        StartDate: startDate,
-        EndDate: endDate,
-        Location:    {
-            "address_components": [
-                {
-                    "long_name": "Peru",
-                    "short_name": "PE",
-                    "types": [
-                        "country",
-                        "political"
-                    ]
-                }
-            ],
+//         }
+//     },
+//     {
+//         Id:4,
+//         Intrests:[],
+//         StartDate: startDate,
+//         EndDate: endDate,
+//         Location:    {
+//             "address_components": [
+//                 {
+//                     "long_name": "Peru",
+//                     "short_name": "PE",
+//                     "types": [
+//                         "country",
+//                         "political"
+//                     ]
+//                 }
+//             ],
             
-            "name": "Peru",
-            "place_id": "ChIJ9RRZwFDIBZERSAYheRIBnvI",
+//             "name": "Peru",
+//             "place_id": "ChIJ9RRZwFDIBZERSAYheRIBnvI",
             
-        }
-    },
-    {
-        Id:5,
-        Intrests:[],
-        StartDate: startDate,
-        EndDate: endDate,
-        Location:    {
-            "address_components": [
-                {
-                    "long_name": "Israel",
-                    "short_name": "IL",
-                    "types": [
-                        "country",
-                        "political"
-                    ]
-                }
-            ],
+//         }
+//     },
+//     {
+//         Id:5,
+//         Intrests:[],
+//         StartDate: startDate,
+//         EndDate: endDate,
+//         Location:    {
+//             "address_components": [
+//                 {
+//                     "long_name": "Israel",
+//                     "short_name": "IL",
+//                     "types": [
+//                         "country",
+//                         "political"
+//                     ]
+//                 }
+//             ],
             
-            "name": "Israel",
+//             "name": "Israel",
             
-            "place_id": "ChIJi8mnMiRJABURuiw1EyBCa2o",
+//             "place_id": "ChIJi8mnMiRJABURuiw1EyBCa2o",
             
-        }
-    }
-];
+//         }
+//     }
+// ];
 
-console.log('+++++++++++++++++++++++++++++++++')
-console.log( searchUtils.findBestPartner(myTrip, other))
+// console.log('+++++++++++++++++++++++++++++++++')
+// console.log( searchUtils.findBestPartner(myTrip, other))

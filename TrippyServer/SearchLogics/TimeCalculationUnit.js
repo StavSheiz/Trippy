@@ -22,8 +22,6 @@ const calcTimeOverlapp = function(trip1Time, trip2Time) {
         datesRangesDiffString +='e';
     }
 
-console.log(datesRangesDiffString);
-
     var dateDiffInDays = datesDifferenceCalcMatrix[datesRangesDiffString](trip1Time, trip2Time);
 
     return dateDiffInDays > 0 ? dateDiffInDays + 1 : dateDiffInDays < 0 ? 0 : 1;
@@ -77,18 +75,17 @@ const datesDifferenceCalcMatrix =
 module.exports = {
     calcTimeOverlapp: calcTimeOverlapp
 }
-/*
-//run
-var a1=new Date();
-var a2=new Date();
 
-var b1=new Date();
-var b2=new Date();
+// //run
+// var a1=new Date();
+// var a2=new Date();
 
-a1.setDate(15);
-a2.setDate(15);
-b1.setDate(10);
-b2.setDate(15);
+// var b1=new Date();
+// var b2=new Date();
 
-console.log(calcTimeOverlapp({start:a1, end:a2}, {start:b1, end:b2}));
-*/
+// a1.setDate(1);
+// a2.setDate(10);
+// b1.setDate(1);
+// b2.setDate(10);
+
+// console.log(calcTimeOverlapp({start:a1, end:a2}, {start:b1, end:b2}));

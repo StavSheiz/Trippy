@@ -24,13 +24,13 @@ router.get('/findPartner', function(req, res){
 });
 
 router.get('/addPartnerToTrip', function(req, res){
-    addNewPartner(req.data).then((result)=>{
+    addNewPartner(req.params).then((result)=>{
         res.send(result);
     },(err => {console.log(err)}))    ;
 })
 
 router.get('/getTripsForUser', function(req,res){
-    getTripsForUser(req.data).then((result)=>{
+    getTripsForUser(req.params).then((result)=>{
         res.send(result);
     },(err => {console.log(err)}))    ;
 })

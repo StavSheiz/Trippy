@@ -6,8 +6,10 @@ import TabBarIcon from '../components/TabBarIcon.js';
 import HomeScreen from '../screens/HomeScreen.js';
 import InterestsScreen from '../screens/InterestsScreen.js';
 import SettingsScreen from '../screens/SettingsScreen.js';
-import Trips from '../screens/Trips';
+import Trips from '../screens/Trips.js';
 import PartnerScreen from '../screens/PartnerScreen.js'
+import TripScreen from '../screens/TripScreen';
+import NewTripScreen from '../screens/NewTripScreen.js';
 
 const PartnerStack = createStackNavigator({
   Partner: PartnerScreen,
@@ -45,12 +47,48 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: InterestsScreen,
+const NewTripStack = createStackNavigator({
+  NewTrip: NewTripScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+NewTripStack.navigationOptions = {
+  tabBarLabel: 'NewTrip',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const TripsStack = createStackNavigator({
+  Trips: Trips,
+});
+
+TripsStack.navigationOptions = {
+  tabBarLabel: 'Trips',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const InterestsStack = createStackNavigator({
+  Interests: InterestsScreen,
+});
+
+InterestsStack.navigationOptions = {
+  tabBarLabel: 'Interests',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -60,7 +98,7 @@ LinksStack.navigationOptions = {
 };
 
 const SettingsStack = createStackNavigator({
-  Settings: Trips,
+  Settings: TripScreen,
 });
 
 SettingsStack.navigationOptions = {
@@ -74,8 +112,10 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
+  NewTripStack,
   PartnerStack,
   HomeStack,
-  LinksStack,
+  InterestsStack,
   SettingsStack,
+  TripsStack
 });

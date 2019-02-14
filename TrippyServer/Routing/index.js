@@ -18,8 +18,9 @@ router.get('/addNewTrip', function(req, res){
     },(err => {console.log(err)}))    ;
 });
 
+// tripId parameter
 router.get('/findPartner', function(req, res){
-    searchBestMatch();
+    searchBestMatch(req.params.tripId, res);
 });
 
 router.get('/addPartnerToTrip', function(req, res){

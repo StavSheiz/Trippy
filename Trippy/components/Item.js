@@ -4,21 +4,23 @@ import { Image, Text } from 'react-native-elements';
 
 export default class Item extends React.Component {
   constructor(props) {
-    super();
+    super(props);
+
+    console.log(this.props);
   }
   
 render() {
     const {main, sub, img} = this.props;
-
+    console.log(sub);
     return (
         <View style={styles.row}>
-            <View style={styles.column}>
-                <Text style={styles.main}>{main}</Text>
-                { sub ? <Text style={styles.sub}>{sub}</Text> :null }
-            </View>
             <Image source={{ uri: img }}
                 style={styles.image}
                 PlaceholderContent={<ActivityIndicator />}/>
+            <View style={styles.column}>
+                <Text style={sub ? styles.main : styles.justMain}>{main}</Text>
+                { sub ? <Text style={styles.sub}>{sub}</Text> : null }
+            </View>
         </View>   
     )
   }
@@ -30,7 +32,7 @@ const styles = {
         width: 80,
         borderRadius: 40,
         marginRight: 20,
-        marginTop: 5
+        marginTop: 10
     },
     row: {
         flex: 1,
@@ -44,8 +46,12 @@ const styles = {
         marginTop: 20,
         marginRight: 30
     },
+    justMain: {
+        fontSize: 20,
+        marginTop: 15
+    },
     main: {
-        fontSize: 20
+        fontSize: 20,
     },
     sub: {
         fontSize: 15,

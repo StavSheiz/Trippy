@@ -21,5 +21,30 @@ export async function getTags() {
       console.error(error);
     }
   }
+
+ export function findPartners() {
+    try {
+      console.log('send')
+      return axios.get(
+        'https://192.168.43.244:3000/findPartners'
+      );
+    } catch (error) {
+      console.error(error);
+    }
+ } 
 export function addPartner() {}
 export function nextPartner() {}
+export function addTrip(newTrip) {
+    try {
+      console.log('send')
+      // return axios.post(
+      //   'https://192.168.43.244:3000/addTrip',
+      //   newTrip
+      // );
+      return axios.get(
+        ''
+      );
+    } catch (error) {
+      console.error(error);
+    }
+}

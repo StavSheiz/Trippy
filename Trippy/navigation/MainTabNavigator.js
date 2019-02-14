@@ -6,10 +6,10 @@ import TabBarIcon from '../components/TabBarIcon.js';
 import HomeScreen from '../screens/HomeScreen.js';
 import InterestsScreen from '../screens/InterestsScreen.js';
 import SettingsScreen from '../screens/SettingsScreen.js';
-import Trips from '../screens/Trips';
+import Trips from '../screens/Trips.js';
 import PartnerScreen from '../screens/PartnerScreen.js'
 import TripScreen from '../screens/TripScreen';
-import NewTrip from '../screens/NewTrip'
+import NewTripScreen from '../screens/NewTripScreen.js';
 
 const PartnerStack = createStackNavigator({
   Partner: PartnerScreen,
@@ -48,7 +48,7 @@ HomeStack.navigationOptions = {
 };
 
 const NewTripStack = createStackNavigator({
-  NewTrip: NewTrip,
+  NewTrip: NewTripScreen,
 });
 
 NewTripStack.navigationOptions = {
@@ -65,12 +65,30 @@ NewTripStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: InterestsScreen,
+const TripsStack = createStackNavigator({
+  Trips: Trips,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+TripsStack.navigationOptions = {
+  tabBarLabel: 'Trips',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const InterestsStack = createStackNavigator({
+  Interests: InterestsScreen,
+});
+
+InterestsStack.navigationOptions = {
+  tabBarLabel: 'Interests',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -94,9 +112,10 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
+  NewTripStack,
   PartnerStack,
   HomeStack,
-  LinksStack,
+  InterestsStack,
   SettingsStack,
-  NewTripStack
+  TripsStack
 });

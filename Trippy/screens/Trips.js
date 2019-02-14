@@ -6,7 +6,7 @@ import Images from '../assets/images/images';
 
 export default class Trips extends React.Component {
   constructor(props) {
-    super();
+    super(props);
   }
   
 render() {

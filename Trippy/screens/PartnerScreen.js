@@ -14,7 +14,11 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures'
 import Swiper from 'react-native-swiper'
 
 export default class PartnerScreen extends React.Component {
-	constructor(props) {
+    static navigationOptions = {
+		header: null,
+    };
+
+    constructor(props) {
 		super(props)
 		this.state = {
             img: Images['Stav'],
@@ -41,12 +45,14 @@ export default class PartnerScreen extends React.Component {
     }
 
     onSwipeLeft(gestureState) {
+        this.props.navigation.navigate('Partner')
     }
      
     onSwipeRight(gestureState) {
     }
 
     onSwipe(gestureName, gestureState) {
+        console.log(this.props);
         const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
         this.setState({gestureName: gestureName});
         switch (gestureName) {

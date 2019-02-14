@@ -10,22 +10,30 @@ const client = new Client({
 })
 
 function connectToDb() {
-    return client.connect();
+    if (!client["_connected"]){
+        return client.connect();
+    }
+    else 
+        var a = new Promise();
+        a.resolve();
+
+        return a;
 }
 
 
 function executeQuery(query, params) {
 
     var promise = new Promise(
-    function (resolve, reject) {connectToDb().then(() => {
+    function (resolve, reject) {
+        connectToDb().then(() => {
         client.query(query, params, (err, res) => {
             console.log(err, res)
-            client.end()
+             client.end()
 
             resolve(res["rows"]);
-        })
+         })
     }, (err) => {
-        client.end()
+         client.end()
         console.log(err)
         reject(err);
     })});

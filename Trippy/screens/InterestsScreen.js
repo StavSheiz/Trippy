@@ -3,6 +3,7 @@ import {
 	ScrollView,
 	StyleSheet,
 	View,
+	FlatList
 } from 'react-native';
 import { Avatar, Badge, Text, Icon } from 'react-native-elements';
 import { TopNavigation } from '../components/TopNavigation/TopNavigation'
@@ -32,39 +33,40 @@ export default class InterestsScreen extends React.Component {
 
 	fetchTags() {
 		getTags().then((data) => {
-			console.log(data)
-			//this.setState({ tags: data.tags })
+			this.setState({ tags: data.data.map((row)=> {return {id: row.ID, name: row.NAME, img: row.IMG, key: row.ID}}) })
 		}, (err) => {console.log(err)})
 	}
 
 	addTag(tag) {
+		console.log(tag)
 		selected = this.state.selectedTags.filter((selectedTag) => { return selectedTag.id !== tag.id })
 		if (selected.length === this.state.selectedTags.length) {
 			selected.push(tag)
 		}
+		console.log(selected)
 		this.setState({ selectedTags:selected })
 	}
 
-	Tag(tag) {
-		const isSelected = (this.state.selectedTags.filter((selected) => {
-			 return selected.id === tag.id })).length
-		return (<View key={'tag' + tag.id} style={styles.tag}>
-			<Text>{tag.name}</Text>
+	Tag({item}) {
+			const isSelected = (this.state.selectedTags.filter((selected) => {
+				return selected.id === item.id })).length
+				console.log(isSelected)
+		   return (<View key={'tag' + item.id} style={styles.tag}>
+			   <Text>{item.name}</Text>
+   
+			   {(isSelected) ? <Icon name='check' onPress={this.addTag.bind(this,item)} reverse={true} containerStyle={{ top: 80, right: 40, zIndex: 3, position:'absolute' }}/> : <View/>}
+			   <Avatar source={Images[item.img]} size='xlarge' onPress={this.addTag.bind(this,item)} avatarStyle={{opacity: isSelected ? 0.2 : 1, backgroundColor: 'white'}} />
+		   </View>)
+		
 
-			{(isSelected) ? <Icon name='check' onPress={this.addTag.bind(this, tag)} reverse={true} containerStyle={{ top: 80, right: 40, zIndex: 3, position:'absolute' }}/> : <View/>}
-			<Avatar source={Images[tag.img]} size='xlarge' onPress={this.addTag.bind(this, tag)} avatarStyle={{opacity: isSelected ? 0.2 : 1, backgroundColor: 'white'}} />
-		</View>)
 	}
 
 	render() {
 		return (
 			<View style={styles.container}>
 				<TopNavigation title='My Interests'></TopNavigation>
-				<ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-					{this.state.tags.map((tag) => {
-						return this.Tag(tag)
-					})}
-				</ScrollView>
+				<FlatList extraData={this.state} numColumns={2} style={styles.container} contentContainerStyle={styles.contentContainer} data={this.state.tags} renderItem={this.Tag.bind(this)}>
+				</FlatList>
 			</View>
 		);
 	}
@@ -77,9 +79,9 @@ const styles = StyleSheet.create({
 	},
 
 	contentContainer: {
-		flex: 1,
-		flexDirection: 'row',
-		flexWrap: 'wrap',
+		// flex: 1,
+		// flexDirection: 'row',
+		// flexWrap: 'wrap',
 		paddingTop: 30,
 	},
 	tag: {

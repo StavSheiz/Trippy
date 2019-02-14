@@ -70,16 +70,13 @@ export default class InterestsScreen extends React.Component {
 		const {navigation} = this.props;
 		const tripDetails = navigation.getParam('tripDetails');
 		Object.assign(tripDetails, {tags: this.state.selectedTags});
-
-		addTrip(tripDetails).then((data) => {
-			console.log(data);
-			console.log('after');
+		console.log(tripDetails)
+		addTrip(tripDetails).then((tripId) => {
+			this.props.navigation.navigate('Partner', {tripId: 1});
 		}, (err) => {
 			console.log(err);
-			console.log('afterrrr');
 		});
 
-		this.props.navigation.navigate('Partner');
 	}
 
 	render() {

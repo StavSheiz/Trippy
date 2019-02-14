@@ -1,9 +1,10 @@
-
-const { executeQuery } = require('../DBAccess')
+const {
+    executeQuery
+} = require('../DBAccess')
 const converter = require("../Convertion/TripMapping")
 const searchUtils = require("../SearchLogics/PartnersSearch")
 
-function searchBestMatch(tripId, response){
+function searchBestMatch(tripId, response) {
     var query = `
         SELECT  "TRIPS".ID, 
                 "TRIPS".LOCATION, 
@@ -20,13 +21,17 @@ function searchBestMatch(tripId, response){
         INNER JOIN public."TRIP_USER" ON "TRIP_USER".TRIP_ID = "TRIPS".ID
         INNER JOIN public."USERS" ON "TRIP_USER".USER_ID = "TRIP_USER".ID
     `
-    const values= [ ];
+    const values = [];
 
-     executeQuery(query, values).then((res)=> {
+    return executeQuery(query, values).then((res) => {
 
         var trips = converter.mapTripsWithUser(res);
-        var myTrip = trips.filter((t)=>{ t.Id == tripId})[0];
-        var OtherTrips = trips.filter((t)=>{ t.Id != tripId});
+        var myTrip = trips.filter((t) => {
+            t.Id == tripId
+        })[0];
+        var OtherTrips = trips.filter((t) => {
+            t.Id != tripId
+        });
 
 
         var recomndation = searchUtils.findBestPartner(myTrip, OtherTrips);
@@ -36,9 +41,15 @@ function searchBestMatch(tripId, response){
 
 }
 
-module.exports = {searchBestMatch};
+module.exports = {
+    searchBestMatch
+};
 
-searchBestMatch(3, {send:function(q){console.log(q)}});
+searchBestMatch(3, {
+    send: function (q) {
+        console.log(q)
+    }
+});
 
 // var startDate = new Date();
 // var endDate = new Date();
@@ -86,11 +97,11 @@ searchBestMatch(3, {send:function(q){console.log(q)}});
 //                 ]
 //             }
 //         ],
-       
+
 //         "name": "Haifa",
-        
+
 //         "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
-        
+
 //     }
 // }
 
@@ -135,11 +146,11 @@ searchBestMatch(3, {send:function(q){console.log(q)}});
 //                     ]
 //                 }
 //             ],
-           
+
 //             "name": "Haifa",
-            
+
 //             "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
-            
+
 //         }
 //     },
 //     {
@@ -182,11 +193,11 @@ searchBestMatch(3, {send:function(q){console.log(q)}});
 //                     ]
 //                 }
 //             ],
-           
+
 //             "name": "Haifa",
-            
+
 //             "place_id": "ChIJRegNdUy6HRURmlKBKpgjXcM",
-            
+
 //         }
 //     },
 //     {
@@ -205,10 +216,10 @@ searchBestMatch(3, {send:function(q){console.log(q)}});
 //                     ]
 //                 }
 //             ],
-            
+
 //             "name": "Peru",
 //             "place_id": "ChIJ9RRZwFDIBZERSAYheRIBnvI",
-            
+
 //         }
 //     },
 //     {
@@ -227,11 +238,11 @@ searchBestMatch(3, {send:function(q){console.log(q)}});
 //                     ]
 //                 }
 //             ],
-            
+
 //             "name": "Israel",
-            
+
 //             "place_id": "ChIJi8mnMiRJABURuiw1EyBCa2o",
-            
+
 //         }
 //     }
 // ];

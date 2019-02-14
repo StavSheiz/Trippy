@@ -1,50 +1,72 @@
-
 const express = require('express')
 const router = express.Router()
 
-const { executeQuery } = require('../DBAccess')
-const { addNewTrip, addNewPartner, getWantedPartners } = require('../Repositories/TripRepository')
-const { getTripsForUser, addNewSwipe } = require('../Repositories/UserRepositry')
+const {
+    executeQuery
+} = require('../DBAccess')
+const {
+    addNewTrip,
+    addNewPartner,
+    getTripPartners
+} = require('../Repositories/TripRepository')
+const {
+    getTripsForUser
+} = require('../Repositories/UserRepositry')
+const {
+    searchBestMatch
+} = require('../Repositories/SearchRepository')
 
 router.get('/getIntrests', function (req, res) {
-    executeQuery('select * from public."INTRESTS"').then((result)=>{
+    executeQuery('select * from public."INTRESTS"').then((result) => {
         res.send(result);
-    },(err => {console.log(err)}))    
+    }, (err => {
+        console.log(err)
+    }))
 });
 
-router.get('/addNewTrip', function(req, res){
-    addNewTrip().then((result)=>{
+router.post('/addNewTrip', function (req, res) {
+    addNewTrip(req.body).then((result) => {
         res.send(result);
-    },(err => {console.log(err)}))    ;
+    }, (err => {
+        console.log(err)
+    }));
 });
 
 // tripId parameter
-router.get('/findPartner', function(req, res){
-    searchBestMatch(req.params.tripId, res);
+router.post('/findPartners', function (req, res) {
+    searchBestMatch(req.body.tripId, res)
 });
 
-router.get('/addPartnerToTrip', function(req, res){
-    addNewPartner(req.params).then((result)=>{
+router.get('/addPartnerToTrip', function (req, res) {
+    addNewPartner(req.data).then((result) => {
         res.send(result);
-    },(err => {console.log(err)}))    ;
+    }, (err => {
+        console.log(err)
+    }));
 })
 
-router.get('/getTripsForUser', function(req,res){
-    getTripsForUser(req.params).then((result)=>{
+router.get('/getTripsForUser', function (req, res) {
+    getTripsForUser(req.data).then((result) => {
         res.send(result);
-    },(err => {console.log(err)}))    ;
+    }, (err => {
+        console.log(err)
+    }));
 })
 
-router.get('/getWantedPartners', function(req,res){
-    getWantedPartners(req.params.tripId).then((result)=>{
+router.get('/getWantedPartners', function (req, res) {
+    getWantedPartners(req.params.tripId).then((result) => {
         res.send(result);
-    },(err => {console.log(err)}))    ;
+    }, (err => {
+        console.log(err)
+    }));
 })
 
-router.get('/addNewSwipe', function(req,res){
-    addNewSwipe(req.params).then((result)=>{
+router.get('/addNewSwipe', function (req, res) {
+    addNewSwipe(req.params).then((result) => {
         res.send(result);
-    },(err => {console.log(err)}))    ;
+    }, (err => {
+        console.log(err)
+    }));
 })
 
 

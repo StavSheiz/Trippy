@@ -1,25 +1,33 @@
-const { executeQuery } = require('../DBAccess')
+const {
+    executeQuery
+} = require('../DBAccess')
 
-function addNewTrip(data){
+function addNewTrip(data) {
     var query = `
         INSERT INTO public."TRIPS"
         VALUES(nextval('trips_seq'),$1,$2,$3,$4,$5,$6)
     `
-    const values= ['{"x": "4.6", "y":"7.8"}', '1999/09/09', '1999/09/09', "good good", [1,2], "" ];
+    const tags = data.tags.map((tag) => {
+        return tag.id
+    })
+    const values = [{
+        'location': data.location
+    }, data.end_date, data.start_date, data.details, tags, data.img];
 
     return executeQuery(query, values);
 }
 
-function addNewPartner(data){
+function addNewPartner(data) {
     var query = `
         INSERT INTO public."TRIP_USER"
         VALUES($1,$2,false)
     `
-    const values=[data["trip"],data["user"]];
+    const values = [data["trip"], data["user"]];
     return executeQuery(query, values);
 }
-function getWantedPartners(tripId){
-    let query =`
+
+function getWantedPartners(tripId) {
+    let query = `
     SELECT u."NAME", u."IMG" FROM public."USERS" u
     WHERE u."ID" IN (
                       SELECT tu."USER_ID"
@@ -31,9 +39,27 @@ function getWantedPartners(tripId){
                                               WHERE "OWNER_TRIP_ID" = $1 AND
                                                     "WANTED" = true))
     `
-    const values=[tripId];
+    const values = [tripId];
 
     return executeQuery(query, values)
 }
 
-module.exports = {addNewTrip, addNewPartner, getWantedPartners};
+function getTripPartners(data) {
+    var query = `
+        SELECT *
+        FROM public."USERS" u, 
+            public."TRIP_USER" tu
+        WHERE tu."TRIP_ID" = $1
+        AND tu."USER_ID" = u."ID"
+    `
+
+    const values = [1];
+
+    return executeQuery(query, values);
+}
+
+module.exports = {
+    addNewTrip,
+    addNewPartner,
+    getTripPartners
+};
